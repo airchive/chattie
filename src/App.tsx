@@ -29,7 +29,7 @@ class App extends React.Component<AppProps> {
         this.props.updateSession({
             loggedIn: true,
             session: 'my_session',
-            userName: 'Airscript',
+            username: 'Airscript',
         });
 
         this.props.sendMessage({
@@ -47,7 +47,7 @@ class App extends React.Component<AppProps> {
         this.props.sendMessage({
             message: message,
             timestamp: new Date().getTime(),
-            user: this.props.system.userName,
+            user: this.props.system.username,
         });
 
         this.setState({ message: ''});
@@ -59,7 +59,7 @@ class App extends React.Component<AppProps> {
                 <History messages={this.props.chat.messages} />
                 
                 <Interface 
-                    userName={this.props.system.userName}
+                    username={this.props.system.username}
                     message={this.state.message}
                     updateMessage={this.updateMessage}
                     sendMessage={this.sendMessage}

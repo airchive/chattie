@@ -2,7 +2,7 @@ export const UPDATE_SESSION = "UPDATE_SESSION";
 
 export interface SystemState {
     session: string,
-    userName: string;
+    username: string;
     loggedIn: boolean,
 }
 

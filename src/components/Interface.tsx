@@ -3,13 +3,13 @@ import { UpdateMessageParam } from '../App';
 
 interface InterfaceProps {
     message: string;
-    userName: string;
+    username: string;
     sendMessage: (message: string) => void;
     updateMessage: (event: UpdateMessageParam) => void;
 }
 
 const Interface: React.SFC<InterfaceProps> = ({ 
-    userName,
+    username,
     message,
     updateMessage,
     sendMessage
@@ -24,7 +24,7 @@ const Interface: React.SFC<InterfaceProps> = ({
 
     return (
         <div className='interface'>
-            <h3>User: {userName} </h3>
+            <h3>User: {username} </h3>
 
             <input 
                 value={message}
