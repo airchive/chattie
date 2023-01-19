@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { UpdateMessageParam } from '../App';
 
-interface ChatInterfaceProps {
+interface InterfaceProps {
     message: string;
     userName: string;
     sendMessage: (message: string) => void;
     updateMessage: (event: UpdateMessageParam) => void;
 }
 
-const ChatInterface: React.SFC<ChatInterfaceProps> = ({ userName, message, updateMessage, sendMessage }) => {
+const Interface: React.SFC<InterfaceProps> = ({ 
+    userName,
+    message,
+    updateMessage,
+    sendMessage
+}) => {
     function keyPress(e: React.KeyboardEvent<any>) {
-        if (e.key === 'Enter') {
-            send();
-        }
+        if (e.key === 'Enter') send();
     }
 
     function send() {
@@ -20,7 +23,7 @@ const ChatInterface: React.SFC<ChatInterfaceProps> = ({ userName, message, updat
     }
 
     return (
-        <div className='chat-interface'>
+        <div className='interface'>
             <h3>User: {userName} </h3>
 
             <input 
@@ -36,4 +39,4 @@ const ChatInterface: React.SFC<ChatInterfaceProps> = ({ userName, message, updat
     );
 };
 
-export default ChatInterface;
+export default Interface;

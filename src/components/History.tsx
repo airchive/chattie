@@ -7,7 +7,7 @@ interface ChatHistoryProps {
 
 const ChatHistory: React.SFC<ChatHistoryProps> = ({ messages }) => {
     return (
-        <div className='chat-history'>
+        <div className='history'>
             {messages.map(message => (
                 <div className='message-item' key={message.timestamp}>
                     <h3>From: {message.user}</h3>
