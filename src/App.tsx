@@ -1,17 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+
 import { AppState } from './store/store';
-
-import './App.css';
-
+import History from './components/History';
+import Interface from './components/Interface';
+import { ChatState } from './store/chat/types';
 import { SystemState } from './store/system/types';
+import { sendMessage } from './store/chat/actions';
 import { updateSession } from './store/system/actions';
 
-import { ChatState } from './store/chat/types';
-import { sendMessage } from './store/chat/actions';
-
-import ChatHistory from './components/chatHistory';
-import ChatInterface from './components/chatInterface';
+import './App.css';
 
 interface AppProps {
     sendMessage: typeof sendMessage;
@@ -31,13 +29,13 @@ class App extends React.Component<AppProps> {
         this.props.updateSession({
             loggedIn: true,
             session: 'my_session',
-            userName: 'Airscript'
+            userName: 'Airscript',
         });
 
         this.props.sendMessage({
             user: 'Panny',
+            timestamp: new Date().getTime(),
             message: 'Well done, I am working!',
-            timestamp: new Date().getTime()
         })
     }
 
@@ -47,9 +45,9 @@ class App extends React.Component<AppProps> {
 
     sendMessage = (message: string) => {
         this.props.sendMessage({
-            user: this.props.system.userName,
             message: message,
-            timestamp: new Date().getTime()
+            timestamp: new Date().getTime(),
+            user: this.props.system.userName,
         });
 
         this.setState({ message: ''});
@@ -58,11 +56,13 @@ class App extends React.Component<AppProps> {
     render() {
         return (
             <div className='parent'>
-                <ChatHistory messages={this.props.chat.messages} />
+                <History messages={this.props.chat.messages} />
                 
-                <ChatInterface 
-                    userName={this.props.system.userName} message={this.state.message} 
-                    updateMessage={this.updateMessage} sendMessage={this.sendMessage} 
+                <Interface 
+                    userName={this.props.system.userName}
+                    message={this.state.message}
+                    updateMessage={this.updateMessage}
+                    sendMessage={this.sendMessage}
                 />
             </div>
         );
@@ -70,8 +70,8 @@ class App extends React.Component<AppProps> {
 }
 
 const mapStateToProps = (state: AppState) => ({
+    chat: state.chat,
     system: state.system,
-    chat: state.chat
 });
 
 export default connect(mapStateToProps, { sendMessage, updateSession })(App);
