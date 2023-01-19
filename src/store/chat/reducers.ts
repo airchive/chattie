@@ -1,16 +1,25 @@
-import { SEND_MESSAGE, DELETE_MESSAGE, ChatState, Message, ChatActionTypes } from './types';
+import { 
+    SEND_MESSAGE,
+    DELETE_MESSAGE,
+    ChatState,
+    ChatActionTypes,
+} from './types';
 
 const initalState: ChatState = {
     messages: []
 }
 
-export function chatReducer(state = initalState, action: ChatActionTypes): ChatState {
+export function chatReducer(
+    state = initalState,
+    action: ChatActionTypes
+): ChatState {
     switch (action.type) {
         case SEND_MESSAGE: {
             return {
                 messages: [...state.messages, action.payload]
             };
         }
+
         case DELETE_MESSAGE: {
             return {
                 messages: state.messages.filter(
@@ -18,8 +27,8 @@ export function chatReducer(state = initalState, action: ChatActionTypes): ChatS
                 )
             };
         }
+
         default:
             return state;
-
     }
 }

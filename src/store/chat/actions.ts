@@ -10,6 +10,7 @@ export function sendMessage(newMessage: Message) {
 export function deleteMessage(timestamp: number) {
     return {
         type: DELETE_MESSAGE,
+
         meta: {
             timestamp
         }
