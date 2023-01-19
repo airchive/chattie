@@ -1,3 +1,6 @@
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const DELETE_MESSAGE = "DELETE_MESSAGE";
+
 export interface Message {
     user: string,
     message: string,
@@ -7,9 +10,6 @@ export interface Message {
 export interface ChatState {
     messages: Message[]
 }
-
-export const SEND_MESSAGE = "SEND_MESSAGE";
-export const DELETE_MESSAGE = "DELETE_MESSAGE";
 
 interface SendMessageAction {
     type: typeof SEND_MESSAGE;

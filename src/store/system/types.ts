@@ -1,12 +1,10 @@
-// Describing the shape of the system's slice of state
+export const UPDATE_SESSION = "UPDATE_SESSION";
+
 export interface SystemState {
-    loggedIn: boolean,
     session: string,
     userName: string;
+    loggedIn: boolean,
 }
-
-// Describing the different ACTION NAMES available
-export const UPDATE_SESSION = "UPDATE_SESSION";
 
 interface UpdateSessionAction {
     type: typeof UPDATE_SESSION;
